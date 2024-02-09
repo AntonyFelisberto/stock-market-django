@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 {%block content%}
-    <h1>aqui</h1>
-    {{api}}
+    {% if api%}
+        {% if api == "Error ..."%}
+            there is an error in the api, please try again
+        {% else %}
+            {% for key,value in api.items %}</br>
+                {{key}}:{{value}}
+            {% endfor %}
+        {% endif %}
+    {% else %}
+        api not avaiable at this time, please try again later
+    {% endif %}
 {%endblock%}
