@@ -33,6 +33,15 @@ def add_stock(request):
             form.save()
             messages.success(request,("Stock has been added"))
             return redirect("add_stock")
+        else:
+            messages.error(request,("Stock has not been added"))
+            return redirect("add_stock") 
     else:
         ticker = Stock.objects.all()
         return render(request,"add_stock.html",{"ticker":ticker})
+    
+def delete(request,stock_id):
+    item = Stock.objects.get(pk=stock_id)
+    item.delete()
+    messages.success(request,("Stock has been deleted"))
+    return redirect(add_stock)

@@ -7,6 +7,6 @@
         <button class="btn btn-outline-secondary" type="submit">Stock Quote</button>
     </form>
     {% for item in ticker%}
-        {{item}}<br>
+        {{item}} | <a href="{% url 'delete' item.id %}">DELETE ITEM ID - {{item.id}}</a><br>
     {% endfor %}
 {%endblock%}
