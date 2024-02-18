@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {%block content%}
+
     {% if ticker %}
         {{ticker}}
     {% endif %}
+
     {% if api%}
+
         {% if api == "Error ..."%}
             there is an error in the api, please try again
         {% else %}
@@ -20,7 +23,9 @@
                 {{key}}:{{value}}
             {% endfor %}
         {% endif %}
+
     {% else %}
         api not avaiable at this time, please try again later
     {% endif %}
+    
 {%endblock%}
