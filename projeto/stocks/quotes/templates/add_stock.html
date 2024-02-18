@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{%block content%}
+    <h1>ADD STOCK</h1><br>
+    <form action="{% url 'add_stock' %}" method="POST" class="d-flex" role="search">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Add Stock" aria-label="Search" name="ticker">
+        <button class="btn btn-outline-secondary" type="submit">Stock Quote</button>
+    </form>
+    {% for item in ticker%}
+        {{item}}<br>
+    {% endfor %}
+{%endblock%}

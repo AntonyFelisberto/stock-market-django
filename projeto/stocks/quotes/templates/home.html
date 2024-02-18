@@ -5,7 +5,7 @@
         {{ticker}}
     {% endif %}
 
-    {% if api%}
+    {% if api %}
 
         {% if api == "Error ..."%}
             there is an error in the api, please try again
@@ -19,6 +19,8 @@
             52 WK High: {{api.week52High}}
             52 WK Low:  {{api.week52Low}}
 
+            <hr>
+            <h1>ALL ITEM</h1>
             {% for key,value in api.items %}</br>
                 {{key}}:{{value}}
             {% endfor %}
@@ -27,5 +29,5 @@
     {% else %}
         api not avaiable at this time, please try again later
     {% endif %}
-    
+
 {%endblock%}
