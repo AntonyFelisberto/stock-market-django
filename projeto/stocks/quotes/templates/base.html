@@ -32,6 +32,15 @@
       </nav>
       
     <div class="container">
+        <br>
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible" role="alert">
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              {{message}}
+            </div><br>
+          {% endfor %}
+        {% endif %}
         {% block content%}
 
         {% endblock %}
