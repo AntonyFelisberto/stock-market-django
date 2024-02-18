@@ -6,7 +6,74 @@
         <input class="form-control me-2" type="search" placeholder="Add Stock" aria-label="Search" name="ticker">
         <button class="btn btn-outline-secondary" type="submit">Stock Quote</button>
     </form>
+    
+    <br>
     {% for item in ticker%}
         {{item}} | <a href="{% url 'delete' item.id %}">DELETE ITEM ID - {{item.id}}</a><br>
     {% endfor %}
+    <br>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead class=" table-dark">
+          <tr>
+            <th scope="col">Company Name</th>
+            <th scope="col">Stock Price</th>
+            <th scope="col">Previous Close</th>
+            <th scope="col">Market Cap</th>
+            <th scope="col">YTD Change</th>
+            <th scope="col">52WK High</th>
+            <th scope="col">52WK Low</th>
+            <th scope="col">DELETE STOCK</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if ticker %}
+                {% for item in ticker%}
+                    <tr>
+                        <th scope="row">{{item.id}}</th>
+                        <td>{{item}}</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td><a href="{% url 'delete' item.id %}">DELETE ITEM ID - {{item.id}}</a></td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+      </table>
+      
+      <br>
+      <table class="table table-striped table-bordered table-hover">
+        <thead class=" table-dark">
+          <tr>
+            <th scope="col">Company Name</th>
+            <th scope="col">Stock Price</th>
+            <th scope="col">Previous Close</th>
+            <th scope="col">Market Cap</th>
+            <th scope="col">YTD Change</th>
+            <th scope="col">52WK High</th>
+            <th scope="col">52WK Low</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if ticker %}
+                {% if output %}
+                    {% for list_item in output %}
+                        <tr>
+                            <th scope="row">{{list_item.companyName}}</th>
+                            <td>${{list_item.latestPrice}}</td>
+                            <td>${{list_item.previousClose}}</td>
+                            <td>${{list_item.marketCap}}</td>
+                            <td>{{list_item.ytdChange}}%</td>
+                            <td>${{list_item.week52High}}</td>
+                            <td>${{list_item.week52Low}}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        </tbody>
+      </table>
+ 
 {%endblock%}
